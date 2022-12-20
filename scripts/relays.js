@@ -112,6 +112,7 @@ run()
 
     let merged = relays.concat(remoteMerged)
 
+    console.log('after concat', uniques.length)
     merged = merged.map( relay => {
                 return relay
                         .toLowerCase()
@@ -122,15 +123,11 @@ run()
               })
 
     console.log(merged)
-
     const uniques = Array.from(new Set(merged))
 
-    console.log('after concat', uniques.length)
+    console.log('after unique', uniques.length)
 
     let final = { relays: uniques }
-
-    // console.log(final)
-
 
     await writeYamlFile('./relays.yaml', final)
 
